@@ -17,12 +17,11 @@ function Header(props) {
 }
 
 export default function Generator() {
+  const { muscles, setMuscles, poison, setPoison, goal, setGoal} = props
   const [showModal, setShowModal] = useState(false)
   // let showModal = false /* lets you show which section you've pressed*/, this essentially does the same thing as the line above, but the one above uses useStates to update
   //and therefore lets the user update the code in real time, this would be called a "stateful" variable
-  const [poison, setPoison] = useState('individual')
-  const [muscles, setMuscles] = useState([])
-  const [goal, setGoal] = useState('strength_power')
+  
 
 
   function toggleModal() {
@@ -56,7 +55,7 @@ export default function Generator() {
       <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
       {Object.keys(WORKOUTS).map((type, typeIndex) => {
         return (
-          <button onClick={() => {setMuscles([]), setPoison(type)}} className={'bg-slate-950 border border-blue-400 py-4 duration-200 hover:border-blue-600 rounded-lg ' + (type === poison ? ' border-blue-600 ' : ' border-blue-400')} key={typeIndex}>
+          <button onClick={() => {setMuscles([]), setPoison(type)}} className={'bg-slate-950 border border-blue-400 py-4 duration-200 px-4 hover:border-blue-600 rounded-lg ' + (type === poison ? ' border-blue-600 ' : ' border-blue-400')} key={typeIndex}>
             <p className='capitalize'>{type.replaceAll('_', ' ')}</p>
           </button>
         )
@@ -85,7 +84,7 @@ export default function Generator() {
       <div className='grid grid-cols-3 gap-4'> {/* grid-cols decides the number of cols in the grid */}
       {Object.keys(SCHEMES).map((scheme, schemeIndex) => {
         return (
-          <button onClick={() => {setGoal(scheme)}} className={'bg-slate-950 border border-blue-400 py-4 duration-200 hover:border-blue-600 rounded-lg ' + (scheme === goal ? ' border-blue-600 ' : ' border-blue-400')} key={schemeIndex}>
+          <button onClick={() => {setGoal(scheme)}} className={'bg-slate-950 border border-blue-400 py-4 px-4 duration-200 hover:border-blue-600 rounded-lg ' + (scheme === goal ? ' border-blue-600 ' : ' border-blue-400')} key={schemeIndex}>
             <p className='capitalize'>{scheme.replaceAll('_', ' ')}</p>
           </button>
         )
